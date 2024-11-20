@@ -17,7 +17,8 @@ class Game
     public List<HeroClass> _availableClasses { get; private set; }  = new List<HeroClass>()
     {
         new Warrior(),
-        new Paladin()
+        new Paladin(),
+        new Voleur(),
     };
     private List<Weapon> _availableWeapons = new List<Weapon>()
     {
@@ -130,19 +131,19 @@ class Game
         Hero mob1 = RandomHero(
             "Jakkar",
             100, 100, 100, 100, 750,
-            new List<HeroClass>(){ new Paladin(), new Warrior() });
+            new List<HeroClass>(){ new Paladin(), new Warrior(), new Voleur() });
         Hero mob2 = RandomHero(
             "Visérion",
             100, 100, 100, 100, 1000,
-            new List<HeroClass>(){ new Paladin(), new Warrior() });
+            new List<HeroClass>(){ new Paladin(), new Warrior(), new Voleur() });
         Hero mob3 = RandomHero(
             "Ruféus",
             100, 100, 100, 100, 1250,
-            new List<HeroClass>(){ new Paladin(), new Warrior() });
+            new List<HeroClass>(){ new Paladin(), new Warrior(), new Voleur() });
         Hero mob4 = RandomHero(
             "L'impitoyable M. Galli",
             100, 100, 100, 100, 1500,
-            new List<HeroClass>(){ new Paladin(), new Warrior() });
+            new List<HeroClass>(){ new Paladin(), new Warrior(), new Voleur() });
         _fights = new List<Fight>()
         {
             new Fight(Player, mob1),
