@@ -46,7 +46,8 @@ class Game
         /* 9 */ new Equipment("Cotte de mailles fines", "PV +25%, vitesse et agilité -10%", 1.25f, 0.9f, 1, 0.9f),
         /* 10 */ new Equipment("Cuirasse de conquérant", "PV +100%, force +20%, vitesse -20%, agilité -50%", 2, 0.8f, 1.2f, 0.5f),
         /* 11 */ new Equipment("Gants de puissance", "Force +50%, agilité -10%", 1, 1, 1.5f, 0.9f),
-        /* 12 */ new Equipment("Bottes de contrebandier", "Vitesse +30%, agilité +20%, force -10%", 1, 1.3f, 0.9f, 1.2f)
+        /* 12 */ new Equipment("Bottes de contrebandier", "Vitesse +30%, agilité +20%, force -10%", 1, 1.3f, 0.9f, 1.2f),
+        /* 13 */ new Equipment("Sandales à crampons", "PV +10%, Vitesse +10%, Force +10%, Agilité +10%", 1.1f, 1.1f, 1.1f, 1.1f)
     };
 
     private Random _rand = new Random();
@@ -116,7 +117,8 @@ class Game
             new MarketItem(_availableEquipments[9], 150),
             new MarketItem(_availableEquipments[10], 150),
             new MarketItem(_availableEquipments[11], 150),
-            new MarketItem(_availableEquipments[12], 150)
+            new MarketItem(_availableEquipments[12], 150),
+            new MarketItem(_availableEquipments[13], 150)
         };
         equipmentsCategory.Items.RemoveAll(item => true);
         equipmentsCategory.Items.AddRange(buyableEquipments);
