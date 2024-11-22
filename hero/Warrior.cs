@@ -6,6 +6,7 @@ class Warrior : HeroClass
     public override float SpeedModifier { get => 0.95f; }
     public override float ForceModifier { get => 1.3f; }
     public override float AgilityModifier { get => 0.95f; }
-    public override Weapon BaseWeapon { get; } = new Weapon("Coup de poing", "Arme de base", 1, 2, 1000);
+    public override Weapon BaseWeapon { get; } = new Weapon("Coup de point", "Arme de base", 0, 0, 0, 0, 1, 2, 1000);
+
 
 }

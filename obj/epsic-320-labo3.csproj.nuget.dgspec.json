@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/josepedro/Desktop/Labo 3 Code Source/epsic-320-labo3.csproj": {}
+    "/Users/josepedro/Desktop/Labo3C-/epsic-320-labo3.csproj": {}
   },
   "projects": {
-    "/Users/josepedro/Desktop/Labo 3 Code Source/epsic-320-labo3.csproj": {
+    "/Users/josepedro/Desktop/Labo3C-/epsic-320-labo3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/josepedro/Desktop/Labo 3 Code Source/epsic-320-labo3.csproj",
+        "projectUniqueName": "/Users/josepedro/Desktop/Labo3C-/epsic-320-labo3.csproj",
         "projectName": "epsic-320-labo3",
-        "projectPath": "/Users/josepedro/Desktop/Labo 3 Code Source/epsic-320-labo3.csproj",
+        "projectPath": "/Users/josepedro/Desktop/Labo3C-/epsic-320-labo3.csproj",
         "packagesPath": "/Users/josepedro/.nuget/packages/",
-        "outputPath": "/Users/josepedro/Desktop/Labo 3 Code Source/obj/",
+        "outputPath": "/Users/josepedro/Desktop/Labo3C-/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/josepedro/.nuget/NuGet/NuGet.Config"

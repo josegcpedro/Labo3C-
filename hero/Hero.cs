@@ -30,10 +30,15 @@ class Hero : IMarketCustomer, ICanFight
             double computed = _baseHealth;
             List<IHeroModifier> modifiers = new List<IHeroModifier>();
             modifiers.Add(Class);
-            modifiers.AddRange(Weapons);
-            modifiers.AddRange(Equipments);
             modifiers.ForEach(modifier => computed *= modifier.HealthModifier);
-
+            List<IHeroModifier> Fixedmodifiers = new List<IHeroModifier>();
+            Fixedmodifiers.AddRange(Weapons);
+            Fixedmodifiers.AddRange(Equipments);
+            Fixedmodifiers.ForEach(Fixedmodifier => computed += Fixedmodifier.HealthModifier);
+            if (computed < 0)
+            {
+                return 1;
+            }
             return (int)Math.Round(computed);
         }
     }
@@ -44,10 +49,15 @@ class Hero : IMarketCustomer, ICanFight
             double computed = _baseSpeed;
             List<IHeroModifier> modifiers = new List<IHeroModifier>();
             modifiers.Add(Class);
-            modifiers.AddRange(Weapons);
-            modifiers.AddRange(Equipments);
             modifiers.ForEach(modifier => computed *= modifier.SpeedModifier);
-
+            List<IHeroModifier> Fixedmodifiers = new List<IHeroModifier>();
+            Fixedmodifiers.AddRange(Weapons);
+            Fixedmodifiers.AddRange(Equipments);
+            Fixedmodifiers.ForEach(Fixedmodifier => computed += Fixedmodifier.SpeedModifier);
+            if (computed < 0)
+            {
+                return 1;
+            }
             return (int)Math.Round(computed);
         }
     }
@@ -58,10 +68,15 @@ class Hero : IMarketCustomer, ICanFight
             double computed = _baseForce;
             List<IHeroModifier> modifiers = new List<IHeroModifier>();
             modifiers.Add(Class);
-            modifiers.AddRange(Weapons);
-            modifiers.AddRange(Equipments);
             modifiers.ForEach(modifier => computed *= modifier.ForceModifier);
-
+            List<IHeroModifier> Fixedmodifiers = new List<IHeroModifier>();
+            Fixedmodifiers.AddRange(Weapons);
+            Fixedmodifiers.AddRange(Equipments);
+            Fixedmodifiers.ForEach(Fixedmodifier => computed += Fixedmodifier.ForceModifier);
+            if (computed < 0)
+            {
+                return 1;
+            }
             return (int)Math.Round(computed);
         }
     }
@@ -72,10 +87,15 @@ class Hero : IMarketCustomer, ICanFight
             double computed = _baseAgility;
             List<IHeroModifier> modifiers = new List<IHeroModifier>();
             modifiers.Add(Class);
-            modifiers.AddRange(Weapons);
-            modifiers.AddRange(Equipments);
             modifiers.ForEach(modifier => computed *= modifier.AgilityModifier);
-
+            List<IHeroModifier> Fixedmodifiers = new List<IHeroModifier>();
+            Fixedmodifiers.AddRange(Weapons);
+            Fixedmodifiers.AddRange(Equipments);
+            Fixedmodifiers.ForEach(Fixedmodifier => computed += Fixedmodifier.AgilityModifier);
+            if (computed < 0)
+            {
+                return 1;
+            }
             return (int)Math.Round(computed);
         }
     }

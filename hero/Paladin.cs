@@ -6,5 +6,5 @@ class Paladin : HeroClass
     public override float SpeedModifier { get => 0.6f; }
     public override float ForceModifier { get => 1.2f; }
     public override float AgilityModifier { get => 0.5f; }
-    public override Weapon BaseWeapon { get; } = new Weapon("Martelet", "Arme de base", 1, 2, 1000);
+    public override Weapon BaseWeapon { get; } = new Weapon("Martelet", "Arme de base", 0, 0, 0, 0, 1, 2, 1000);
 }
