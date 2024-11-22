@@ -12,7 +12,7 @@ class Hero : IMarketCustomer, ICanFight
         get
         {
             return "PV: " + Health + " | "
-                + "Vitesse: " + Speed + " | " 
+                + "Vitesse: " + Speed + " | "
                 + "Force: " + Force + " | "
                 + "Agility: " + Agility;
         }
@@ -24,7 +24,7 @@ class Hero : IMarketCustomer, ICanFight
     private int _baseForce;
     private int _baseAgility;
     public int Health
-    { 
+    {
         get
         {
             double computed = _baseHealth;
@@ -35,9 +35,9 @@ class Hero : IMarketCustomer, ICanFight
             Fixedmodifiers.AddRange(Weapons);
             Fixedmodifiers.AddRange(Equipments);
             Fixedmodifiers.ForEach(Fixedmodifier => computed += Fixedmodifier.HealthModifier);
-            if (computed < 0)
+            foreach (var equipment in Equipments)
             {
-                return 1;
+                computed *= equipment.HealthMultiplier;
             }
             return (int)Math.Round(computed);
         }
@@ -54,9 +54,9 @@ class Hero : IMarketCustomer, ICanFight
             Fixedmodifiers.AddRange(Weapons);
             Fixedmodifiers.AddRange(Equipments);
             Fixedmodifiers.ForEach(Fixedmodifier => computed += Fixedmodifier.SpeedModifier);
-            if (computed < 0)
+            foreach (var equipment in Equipments)
             {
-                return 1;
+                computed *= equipment.SpeedMultiplier;
             }
             return (int)Math.Round(computed);
         }
@@ -73,9 +73,9 @@ class Hero : IMarketCustomer, ICanFight
             Fixedmodifiers.AddRange(Weapons);
             Fixedmodifiers.AddRange(Equipments);
             Fixedmodifiers.ForEach(Fixedmodifier => computed += Fixedmodifier.ForceModifier);
-            if (computed < 0)
+            foreach (var equipment in Equipments)
             {
-                return 1;
+                computed *= equipment.ForceMultiplier;
             }
             return (int)Math.Round(computed);
         }
@@ -92,15 +92,16 @@ class Hero : IMarketCustomer, ICanFight
             Fixedmodifiers.AddRange(Weapons);
             Fixedmodifiers.AddRange(Equipments);
             Fixedmodifiers.ForEach(Fixedmodifier => computed += Fixedmodifier.AgilityModifier);
-            if (computed < 0)
+
+            foreach (var equipment in Equipments)
             {
-                return 1;
+                computed *= equipment.AgilityMultiplier;
             }
             return (int)Math.Round(computed);
         }
     }
     public List<IWeapon> Weapons { get; private set; } = new List<IWeapon>();
-    public List<Equipment> Equipments { get; private set; }  = new List<Equipment>();
+    public List<Equipment> Equipments { get; private set; } = new List<Equipment>();
     public Hero(
         string name,
         int baseHealth,
@@ -124,11 +125,11 @@ class Hero : IMarketCustomer, ICanFight
     public void Show()
     {
         Console.Clear();
-        
+
         ConsoleTable table = new ConsoleTable("Nom du héro", Name, "");
         table.AddRow("Classe", Class.Name, Class.Description);
         table.Write(Format.Alternative);
-        
+
         table = new ConsoleTable("Equipment", "Description");
         Equipments.ForEach(equipment => table.AddRow(
             equipment.Name,
@@ -162,7 +163,7 @@ class Hero : IMarketCustomer, ICanFight
                 Weapons.Add(weapon);
                 break;
             case Game.MARKET_CATEGORY_EQUIPMENTS:
-                Equipments.Add((Equipment) item.Article);
+                Equipments.Add((Equipment)item.Article);
                 break;
         }
     }

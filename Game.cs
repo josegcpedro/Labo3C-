@@ -14,7 +14,7 @@ class Game
     private Market _market;
     private List<Fight> _fights;
 
-    public List<HeroClass> _availableClasses { get; private set; }  = new List<HeroClass>()
+    public List<HeroClass> _availableClasses { get; private set; } = new List<HeroClass>()
     {
         new Warrior(),
         new Paladin(),
@@ -48,9 +48,11 @@ class Game
         /* 10 */ new Equipment("Cuirasse de conquérant", "PV +100%, force +20%, vitesse -20%, agilité -50%", 100, -20, 20, -50),
         /* 11 */ new Equipment("Gants de puissance", "Force +50%, agilité -10%", 0, 0, 50, -10),
         /* 12 */ new Equipment("Bottes de contrebandier", "Vitesse +30%, agilité +20%, force -10%", 0, 30, -10, 20),
-        /* 13 */ new Equipment("Sandales à crampons", "PV +10%, Vitesse +10%, Force +10%, Agilité +10%", 10, 10, 10, 10)
-    };
+        /* 13 */ new Equipment("Sandales à crampons", "PV +10%, Vitesse +10%, Force +10%, Agilité +10%", 10, 10, 10, 10),
+        /* 15 */ new Equipment("Cape céleste enchantée", "PV -50%, vitesse +30%, agilité +30%", 0, 0, 0, 0, 0.5f, 1.3f, 0, 1.3f),
+        /* 15 */ new Equipment("Cape de garde royal enchantée", "PV +30%, vitesse -50%, force +30%", 0, 0, 0, 0, 1.3f, 0.5f, 1.3f, 0)
 
+    };
 
     private Random _rand = new Random();
 
@@ -120,7 +122,11 @@ class Game
             new MarketItem(_availableEquipments[10], 150),
             new MarketItem(_availableEquipments[11], 150),
             new MarketItem(_availableEquipments[12], 150),
-            new MarketItem(_availableEquipments[13], 150)
+            new MarketItem(_availableEquipments[13], 150),
+            new MarketItem(_availableEquipments[14], 250),
+            new MarketItem(_availableEquipments[15], 250),
+
+
         };
         equipmentsCategory.Items.RemoveAll(item => true);
         equipmentsCategory.Items.AddRange(buyableEquipments);
@@ -132,19 +138,19 @@ class Game
         Hero mob1 = RandomHero(
             "Jakkar",
             100, 100, 100, 100, 750,
-            new List<HeroClass>(){ new Paladin(), new Warrior(), new Voleur() });
+            new List<HeroClass>() { new Paladin(), new Warrior(), new Voleur() });
         Hero mob2 = RandomHero(
             "Visérion",
             100, 100, 100, 100, 1000,
-            new List<HeroClass>(){ new Paladin(), new Warrior(), new Voleur() });
+            new List<HeroClass>() { new Paladin(), new Warrior(), new Voleur() });
         Hero mob3 = RandomHero(
             "Ruféus",
             100, 100, 100, 100, 1250,
-            new List<HeroClass>(){ new Paladin(), new Warrior(), new Voleur() });
+            new List<HeroClass>() { new Paladin(), new Warrior(), new Voleur() });
         Hero mob4 = RandomHero(
             "L'impitoyable M. Galli",
             100, 100, 100, 100, 1500,
-            new List<HeroClass>(){ new Paladin(), new Warrior(), new Voleur() });
+            new List<HeroClass>() { new Paladin(), new Warrior(), new Voleur() });
         _fights = new List<Fight>()
         {
             new Fight(Player, mob1),
@@ -168,21 +174,21 @@ class Game
         int menuIndex = ConsoleUtils.PromptItems(menus);
         switch (menuIndex)
         {
-            case 0 :
+            case 0:
                 NextFight();
                 break;
-            case 1 :
+            case 1:
                 Player.Show();
                 ConsoleUtils.PressAnyKeyToContinue();
                 ShowMainMenu();
                 break;
-            case 2 :
+            case 2:
                 _market.ShowMenu(Player);
                 break;
-            case 3 :
+            case 3:
                 Start();
                 break;
-            case 4 :
+            case 4:
                 Quit();
                 break;
         }
@@ -274,10 +280,10 @@ class Game
     {
         HeroClass heroClass = availableClasses[_rand.Next(0, availableClasses.Count)];
         Hero hero = new Hero(name, baseHealth, baseSpeed, baseForce, baseAgility, heroClass, money);
-        
+
         RandomHeroStuff(hero, _market.Categories[0], 3);
         RandomHeroStuff(hero, _market.Categories[1], 1000);
-        
+
         return hero;
     }
 
